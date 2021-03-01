@@ -4,6 +4,7 @@ import app.repositories.MeasuresRepository;
 import app.repositories.MetricsRepository;
 import app.repositories.SensorsRepository;
 import app.repositories.UnitsRepository;
+import app.services.JoinMeasureAndSensors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +19,14 @@ public class OptionsController {
     private final MeasuresRepository measuresRepository;
     private final SensorsRepository sensorsRepository;
     private final UnitsRepository unitsRepository;
+    private final JoinMeasureAndSensors joinMeasureAndSensors;
 
-    public OptionsController(MetricsRepository metricsRepository, MeasuresRepository measuresRepository, SensorsRepository sensorsRepository, UnitsRepository unitsRepository) {
+    public OptionsController(MetricsRepository metricsRepository, MeasuresRepository measuresRepository, SensorsRepository sensorsRepository, UnitsRepository unitsRepository, JoinMeasureAndSensors joinMeasureAndSensors) {
         this.metricsRepository = metricsRepository;
         this.measuresRepository = measuresRepository;
         this.sensorsRepository = sensorsRepository;
         this.unitsRepository = unitsRepository;
+        this.joinMeasureAndSensors = joinMeasureAndSensors;
     }
 
     @GetMapping("/getAllMetrics")
@@ -43,7 +46,7 @@ public class OptionsController {
     public String getAllSensors(Model model) {
         System.out.println("hello sensors");
         model.addAttribute("sensors", sensorsRepository.findAll());
-
+        System.out.println(joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
         return "/sensors";
     }
     @GetMapping("/getAllUnits")

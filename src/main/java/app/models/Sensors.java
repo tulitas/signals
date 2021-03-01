@@ -2,6 +2,7 @@ package app.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "sensors")
@@ -17,6 +18,21 @@ public class Sensors implements Serializable {
 
     @Column(name = "name")
     private String name;
+
+
+    @OneToMany(targetEntity = Sensors.class,
+            mappedBy = "sensor_id",
+            orphanRemoval = false,
+            fetch = FetchType.LAZY)
+    private Set<Measures> measures;
+
+    public Set<Measures> getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(Set<Measures> measures) {
+        this.measures = measures;
+    }
 
     public long getSensor_id() {
         return sensor_id;
@@ -48,6 +64,7 @@ public class Sensors implements Serializable {
                 "sensor_id=" + sensor_id +
                 ", serial_code='" + serial_code + '\'' +
                 ", name='" + name + '\'' +
+                ", measures=" + measures +
                 '}';
     }
 }

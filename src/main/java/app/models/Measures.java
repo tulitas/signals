@@ -1,5 +1,8 @@
 package app.models;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -22,6 +25,19 @@ public class Measures implements Serializable {
 
     @Column(name = "rvalue")
     private double rvalue;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "sensor_id", insertable = false, updatable = false)
+    @Fetch(FetchMode.JOIN)
+    private Sensors sensors;
+
+    public Sensors getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(Sensors sensors) {
+        this.sensors = sensors;
+    }
 
     public long getReading_id() {
         return reading_id;
@@ -71,6 +87,7 @@ public class Measures implements Serializable {
                 ", metric_id=" + metric_id +
                 ", rtime='" + rtime + '\'' +
                 ", rvalue=" + rvalue +
+                ", sensors=" + sensors +
                 '}';
     }
 }
