@@ -5,8 +5,10 @@ import app.repositories.MetricsRepository;
 import app.repositories.SensorsRepository;
 import app.repositories.UnitsRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping("/")
@@ -37,11 +39,12 @@ public class OptionsController {
         System.out.println(measuresRepository.findAll());
         return "/";
     }
-    @GetMapping("/getAllSensors")
-    public String getAllSensors() {
+    @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
+    public String getAllSensors(Model model) {
         System.out.println("hello sensors");
-        System.out.println(sensorsRepository.findAll());
-        return "/";
+        model.addAttribute("sensors", sensorsRepository.findAll());
+
+        return "/sensors";
     }
     @GetMapping("/getAllUnits")
     public String getAllUnits() {
