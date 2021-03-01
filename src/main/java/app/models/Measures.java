@@ -26,7 +26,7 @@ public class Measures implements Serializable {
     @Column(name = "rvalue")
     private double rvalue;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sensor_id", insertable = false, updatable = false)
     @Fetch(FetchMode.JOIN)
     private Sensors sensors;

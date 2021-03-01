@@ -2,50 +2,49 @@ package app.dto;
 
 public class MeasureAndSensorsDto {
 
-    private String readingId;
-    private String sensorId;
-    private String metricId;
-    private String rtime;
+    private Long reading_id;
+    private Integer sensor_id;
+    private String metric_id;
+    private double rtime;
     private String rvalue;
 
-    public MeasureAndSensorsDto(String readingId, String sensorId, String metricId, String rtime, String rvalue ){
-        this.readingId = readingId;
-        this.sensorId = sensorId;
-        this.metricId = metricId;
+    public MeasureAndSensorsDto(Long reading_id, Integer sensor_id, String metric_id, double rtime, String rvalue ){
+        this.reading_id = reading_id;
+        this.sensor_id = sensor_id;
+        this.metric_id = metric_id;
         this.rtime = rtime;
         this.rvalue = rvalue;
-        System.out.println("!!!!!!!!!!");
     }
 
-    public String getReadingId() {
-        return readingId;
+    public Long getReading_id() {
+        return reading_id;
     }
 
-    public void setReadingId(String readingId) {
-        this.readingId = readingId;
+    public void setReading_id(Long reading_id) {
+        this.reading_id = reading_id;
     }
 
-    public String getSensorId() {
-        return sensorId;
+    public Integer getSensor_id() {
+        return sensor_id;
     }
 
-    public void setSensorId(String sensorId) {
-        this.sensorId = sensorId;
+    public void setSensor_id(Integer sensor_id) {
+        this.sensor_id = sensor_id;
     }
 
-    public String getMetricId() {
-        return metricId;
+    public String getMetric_id() {
+        return metric_id;
     }
 
-    public void setMetricId(String metricId) {
-        this.metricId = metricId;
+    public void setMetric_id(String metric_id) {
+        this.metric_id = metric_id;
     }
 
-    public String getRtime() {
+    public double getRtime() {
         return rtime;
     }
 
-    public void setRtime(String rtime) {
+    public void setRtime(double rtime) {
         this.rtime = rtime;
     }
 
@@ -60,9 +59,9 @@ public class MeasureAndSensorsDto {
     @Override
     public String toString() {
         return "MeasureAndSensorsDto{" +
-                "readingId='" + readingId + '\'' +
-                ", sensorId='" + sensorId + '\'' +
-                ", metricId='" + metricId + '\'' +
+                "reading_id=" + reading_id +
+                ", sensor_id=" + sensor_id +
+                ", metric_id=" + metric_id +
                 ", rtime='" + rtime + '\'' +
                 ", rvalue='" + rvalue + '\'' +
                 '}';

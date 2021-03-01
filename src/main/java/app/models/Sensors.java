@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "sensors")
 public class Sensors implements Serializable {
@@ -20,10 +21,12 @@ public class Sensors implements Serializable {
     private String name;
 
 
-    @OneToMany(targetEntity = Sensors.class,
+    @OneToMany(targetEntity = Measures.class,
             mappedBy = "sensor_id",
             orphanRemoval = false,
-            fetch = FetchType.LAZY)
+
+            fetch = FetchType.EAGER)
+
     private Set<Measures> measures;
 
     public Set<Measures> getMeasures() {

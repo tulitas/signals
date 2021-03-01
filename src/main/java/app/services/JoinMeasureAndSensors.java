@@ -7,8 +7,8 @@ import app.repositories.SensorsRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import java.util.List;
-
 @Service
 public class JoinMeasureAndSensors {
     @Resource
@@ -18,7 +18,9 @@ public class JoinMeasureAndSensors {
 
 
     public List<MeasureAndSensorsDto> getMeasureAndSensorsRightJoin() {
+        System.out.println("987987987987987987");
         List<MeasureAndSensorsDto> list = sensorsRepository.fetchEmpPosDataRightJoin();
+        System.out.println("@@@@@@@@@@@@");
         list.forEach(l -> System.out.println(l));
         return list;
     }

@@ -5,12 +5,13 @@ import app.repositories.MetricsRepository;
 import app.repositories.SensorsRepository;
 import app.repositories.UnitsRepository;
 import app.services.JoinMeasureAndSensors;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 @Controller
 @RequestMapping("/")
 public class OptionsController {
@@ -48,8 +49,8 @@ public class OptionsController {
     }
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
-        System.out.println("hello sensors");
         model.addAttribute("sensors", sensorsRepository.findAll());
+        System.out.println(sensorsRepository.findAll() + "1111111");
         System.out.println(joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
         return "/sensors";
     }
