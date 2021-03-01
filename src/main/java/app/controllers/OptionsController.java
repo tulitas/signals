@@ -21,7 +21,11 @@ public class OptionsController {
     private final UnitsRepository unitsRepository;
     private final JoinMeasureAndSensors joinMeasureAndSensors;
 
-    public OptionsController(MetricsRepository metricsRepository, MeasuresRepository measuresRepository, SensorsRepository sensorsRepository, UnitsRepository unitsRepository, JoinMeasureAndSensors joinMeasureAndSensors) {
+    public OptionsController(MetricsRepository metricsRepository,
+                             MeasuresRepository measuresRepository,
+                             SensorsRepository sensorsRepository,
+                             UnitsRepository unitsRepository,
+                             JoinMeasureAndSensors joinMeasureAndSensors) {
         this.metricsRepository = metricsRepository;
         this.measuresRepository = measuresRepository;
         this.sensorsRepository = sensorsRepository;
