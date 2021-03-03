@@ -4,16 +4,27 @@ public class MeasureAndSensorsDto {
 
     private Long reading_id;
     private Integer sensor_id;
-    private String metric_id;
-    private double rtime;
-    private String rvalue;
+    private Integer metric_id;
+    private String rtime;
+    private Double rvalue;
+    private String name;
 
-    public MeasureAndSensorsDto(Long reading_id, Integer sensor_id, String metric_id, double rtime, String rvalue ){
+    public MeasureAndSensorsDto(Long reading_id, Integer sensor_id,
+                                Integer metric_id, String rtime, Double rvalue, String name ){
         this.reading_id = reading_id;
         this.sensor_id = sensor_id;
         this.metric_id = metric_id;
         this.rtime = rtime;
         this.rvalue = rvalue;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getReading_id() {
@@ -32,27 +43,27 @@ public class MeasureAndSensorsDto {
         this.sensor_id = sensor_id;
     }
 
-    public String getMetric_id() {
+    public Integer getMetric_id() {
         return metric_id;
     }
 
-    public void setMetric_id(String metric_id) {
+    public void setMetric_id(Integer metric_id) {
         this.metric_id = metric_id;
     }
 
-    public double getRtime() {
+    public String getRtime() {
         return rtime;
     }
 
-    public void setRtime(double rtime) {
+    public void setRtime(String rtime) {
         this.rtime = rtime;
     }
 
-    public String getRvalue() {
+    public Double getRvalue() {
         return rvalue;
     }
 
-    public void setRvalue(String rvalue) {
+    public void setRvalue(Double rvalue) {
         this.rvalue = rvalue;
     }
 
@@ -63,7 +74,8 @@ public class MeasureAndSensorsDto {
                 ", sensor_id=" + sensor_id +
                 ", metric_id=" + metric_id +
                 ", rtime='" + rtime + '\'' +
-                ", rvalue='" + rvalue + '\'' +
+                ", rvalue=" + rvalue +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

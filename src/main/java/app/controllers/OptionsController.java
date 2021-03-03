@@ -12,11 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 @Controller
 @RequestMapping("/")
 public class OptionsController {
-
-    private final MetricsRepository metricsRepository;
+private final MetricsRepository metricsRepository;
     private final MeasuresRepository measuresRepository;
     private final SensorsRepository sensorsRepository;
     private final UnitsRepository unitsRepository;
@@ -47,13 +47,14 @@ public class OptionsController {
         System.out.println(measuresRepository.findAll());
         return "/";
     }
+
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorsRepository.findAll());
-        System.out.println(sensorsRepository.findAll() + "1111111");
-        System.out.println(joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
+        joinMeasureAndSensors.getMeasureAndSensorsRightJoin();
         return "/sensors";
     }
+
     @GetMapping("/getAllUnits")
     public String getAllUnits() {
         System.out.println("hello units");

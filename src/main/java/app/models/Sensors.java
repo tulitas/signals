@@ -24,7 +24,6 @@ public class Sensors implements Serializable {
     @OneToMany(targetEntity = Measures.class,
             mappedBy = "sensor_id",
             orphanRemoval = false,
-
             fetch = FetchType.EAGER)
 
     private Set<Measures> measures;
@@ -67,7 +66,7 @@ public class Sensors implements Serializable {
                 "sensor_id=" + sensor_id +
                 ", serial_code='" + serial_code + '\'' +
                 ", name='" + name + '\'' +
-                ", measures=" + measures +
+
                 '}';
     }
 }

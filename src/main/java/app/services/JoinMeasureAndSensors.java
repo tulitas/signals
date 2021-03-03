@@ -18,10 +18,8 @@ public class JoinMeasureAndSensors {
 
 
     public List<MeasureAndSensorsDto> getMeasureAndSensorsRightJoin() {
-        System.out.println("987987987987987987");
         List<MeasureAndSensorsDto> list = sensorsRepository.fetchEmpPosDataRightJoin();
-        System.out.println("@@@@@@@@@@@@");
-        list.forEach(l -> System.out.println(l));
+        list.forEach(System.out::println);
         return list;
     }
 }

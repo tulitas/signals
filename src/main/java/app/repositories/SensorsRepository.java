@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 @Repository
 public interface SensorsRepository extends JpaRepository<Sensors, Integer>, CrudRepository<Sensors, Integer> {
-    @Query(value = "SELECT new app.dto.MeasureAndSensorsDto( e.reading_id, e.metric_id, e.rtime, e.rvalue, d.name) " +
+    @Query(value = "SELECT new app.dto.MeasureAndSensorsDto( e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue, d.name) " +
             "FROM Sensors d left JOIN d.measures e")
     List<MeasureAndSensorsDto> fetchEmpPosDataRightJoin();
 }
