@@ -9,8 +9,12 @@ public class MeasureAndSensorsDto {
     private Double rvalue;
     private String name;
 
-    public MeasureAndSensorsDto(Long reading_id, Integer sensor_id,
-                                Integer metric_id, String rtime, Double rvalue, String name ){
+    public MeasureAndSensorsDto(Long reading_id,
+                                Integer sensor_id,
+                                Integer metric_id,
+                                String rtime,
+                                Double rvalue,
+                                String name ){
         this.reading_id = reading_id;
         this.sensor_id = sensor_id;
         this.metric_id = metric_id;
