@@ -2,6 +2,7 @@ package app.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "metrics")
@@ -17,6 +18,20 @@ public class Metrics implements Serializable {
     @Column(name = "unit_id")
     private Integer unit_id;
 
+    @OneToMany(targetEntity = Measures.class,
+            mappedBy = "metric_id",
+            orphanRemoval = false,
+            fetch = FetchType.EAGER)
+
+    private Set<Measures> measures;
+
+    public Set<Measures> getMeasures() {
+        return measures;
+    }
+
+    public void setMeasures(Set<Measures> measures) {
+        this.measures = measures;
+    }
 
     public long getMetric_id() {
         return metric_id;

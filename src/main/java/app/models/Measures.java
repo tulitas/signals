@@ -27,9 +27,22 @@ public class Measures implements Serializable {
     private double rvalue;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "metric_id", insertable = false, updatable = false)
+    @Fetch(FetchMode.JOIN)
+    private Metrics metrics;
+
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sensor_id", insertable = false, updatable = false)
     @Fetch(FetchMode.JOIN)
     private Sensors sensors;
+
+    public Metrics getMetrics() {
+        return metrics;
+    }
+
+    public void setMetrics(Metrics metrics) {
+        this.metrics = metrics;
+    }
 
     public Sensors getSensors() {
         return sensors;
@@ -87,6 +100,7 @@ public class Measures implements Serializable {
                 ", metric_id=" + metric_id +
                 ", rtime='" + rtime + '\'' +
                 ", rvalue=" + rvalue +
+                ", metrics=" + metrics +
                 ", sensors=" + sensors +
                 '}';
     }

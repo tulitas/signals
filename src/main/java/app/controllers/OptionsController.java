@@ -4,10 +4,9 @@ import app.repositories.MeasuresRepository;
 import app.repositories.MetricsRepository;
 import app.repositories.SensorsRepository;
 import app.repositories.UnitsRepository;
+import app.services.JoinMeasureAndMetric;
 import app.services.JoinMeasureAndSensors;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +20,21 @@ private final MetricsRepository metricsRepository;
     private final SensorsRepository sensorsRepository;
     private final UnitsRepository unitsRepository;
     private final JoinMeasureAndSensors joinMeasureAndSensors;
+    private final JoinMeasureAndMetric joinMeasureAndMetric;
+
 
     public OptionsController(MetricsRepository metricsRepository,
                              MeasuresRepository measuresRepository,
                              SensorsRepository sensorsRepository,
                              UnitsRepository unitsRepository,
-                             JoinMeasureAndSensors joinMeasureAndSensors) {
+                             JoinMeasureAndSensors joinMeasureAndSensors,
+                             JoinMeasureAndMetric joinMeasureAndMetric) {
         this.metricsRepository = metricsRepository;
         this.measuresRepository = measuresRepository;
         this.sensorsRepository = sensorsRepository;
         this.unitsRepository = unitsRepository;
         this.joinMeasureAndSensors = joinMeasureAndSensors;
+        this.joinMeasureAndMetric = joinMeasureAndMetric;
     }
 
     @GetMapping("/getAllMetrics")
@@ -51,8 +54,9 @@ private final MetricsRepository metricsRepository;
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorsRepository.findAll());
-        joinMeasureAndSensors.getMeasureAndSensorsRightJoin();
-        return "/sensors";
+        model.addAttribute("test", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
+        model.addAttribute("metrics", joinMeasureAndMetric.getMeasureAndSensorsRightJoin());
+        return "sensors";
     }
 
     @GetMapping("/getAllUnits")
