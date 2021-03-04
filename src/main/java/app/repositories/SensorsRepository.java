@@ -1,7 +1,6 @@
 package app.repositories;
 
 import app.dto.MeasureAndSensorsDto;
-import app.models.Measures;
 import app.models.Sensors;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

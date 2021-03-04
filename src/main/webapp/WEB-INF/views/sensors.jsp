@@ -12,7 +12,7 @@
     <tr>
         <th>Name</th>
     </tr>
-    <c:forEach var="sensors" items="${sensors}">
+    <c:forEach var="sensors" items="${allSensors}">
         <tr>
             <td width="25%">${sensors.name}</td>
         </tr>
@@ -31,7 +31,8 @@
             <td width="25%">${test.name}</td>
             <td width="25%">${test.rvalue}</td>
             <td width="25%">${test.rtime}</td>
-            <td width="25%">${metrics.metric_name}</td>
+            <td width="25%">${metrics}</td>
+
         </tr>
     </c:forEach>
     </c:forEach>
