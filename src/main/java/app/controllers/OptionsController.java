@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class OptionsController {
-private final MetricsRepository metricsRepository;
+    private final MetricsRepository metricsRepository;
     private final MeasuresRepository measuresRepository;
     private final SensorsRepository sensorsRepository;
     private final UnitsRepository unitsRepository;
@@ -54,8 +54,10 @@ private final MetricsRepository metricsRepository;
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorsRepository.findAll());
+
         model.addAttribute("test", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
-        model.addAttribute("metrics", joinMeasureAndMetric.getMeasureAndSensorsRightJoin());
+        model.addAttribute("metrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoin());
+//        System.out.println(model);
         return "sensors";
     }
 
@@ -66,4 +68,10 @@ private final MetricsRepository metricsRepository;
         return "/";
     }
 
+    @GetMapping("/findByDate")
+    public String getByDate(Model model, String metricDate) {
+        System.out.println(metricDate);
+        return "sensors";
+
+    }
 }

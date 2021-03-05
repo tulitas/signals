@@ -8,33 +8,31 @@
 </head>
 <body>
 <h2>Sensors list</h2>
-<table id="myTable">
+
+<table id="myTable" style="float: left;">
     <tr>
         <th>Name</th>
-    </tr>
-    <c:forEach var="sensors" items="${allSensors}">
-        <tr>
-            <td width="25%">${sensors.name}</td>
-        </tr>
-    </c:forEach>
-</table>
-<table id="myTable">
-    <tr>
-        <th>Name</th>
-        <th>rvalue</th>
         <th>rtime</th>
-        <th>metric</th>
+        <th>rvalue</th>
     </tr>
-    <c:forEach var="metrics" items="${metrics}">
+
     <c:forEach var="test" items="${test}">
         <tr>
             <td width="25%">${test.name}</td>
-            <td width="25%">${test.rvalue}</td>
             <td width="25%">${test.rtime}</td>
-            <td width="25%">${metrics}</td>
-
+            <td width="25%">${test.rvalue}</td>
         </tr>
     </c:forEach>
+
+</table>
+<table id="myTable">
+    <tr>
+        <th>metric</th>
+    </tr>
+    <c:forEach var="metrics" items="${metrics}">
+        <tr>
+            <td width="25%">${metrics.metric_name}</td>
+        </tr>
     </c:forEach>
 </table>
 

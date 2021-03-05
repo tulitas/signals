@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<form action="${pageContext.request.contextPath}findByDate" method="get">
+    <input type="text" id="metricDate" name="metricDate">
 <button onclick="location.href='/getAllSensors'">Sensors</button>
+</form>
 </body>
 </html>

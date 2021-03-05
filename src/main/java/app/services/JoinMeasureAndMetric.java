@@ -14,9 +14,9 @@ public class JoinMeasureAndMetric {
     private MetricsRepository metricsRepository;
 
 
-    public List<MeasureAndMetricsDto> getMeasureAndSensorsRightJoin() {
+    public List<MeasureAndMetricsDto> getMeasureAndMetricsLeftJoin() {
         List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoin();
-        list.forEach(System.out::println);
+//        list.forEach(System.out::println);
         return list;
     }
 
