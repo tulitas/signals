@@ -9,4 +9,5 @@ import javax.transaction.Transactional;
 @Repository
 public interface MeasuresRepository extends CrudRepository<Sensors, Integer> {
 
+
 }

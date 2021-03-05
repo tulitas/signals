@@ -25,6 +25,7 @@
         <th>rtime</th>
         <th>metric</th>
     </tr>
+    <c:forEach var="metrics" items="${metrics}">
     <c:forEach var="test" items="${test}">
         <tr>
             <td width="25%">${test.name}</td>
@@ -32,6 +33,7 @@
             <td width="25%">${test.rtime}</td>
             <td width="25%">${metrics.metric_name}</td>
         </tr>
+    </c:forEach>
     </c:forEach>
 </table>
 

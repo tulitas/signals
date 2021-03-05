@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+
 @Service
 public class JoinMeasureAndMetric {
 
@@ -18,4 +19,6 @@ public class JoinMeasureAndMetric {
         list.forEach(System.out::println);
         return list;
     }
+
+
 }

@@ -65,4 +65,5 @@ private final MetricsRepository metricsRepository;
         System.out.println(unitsRepository.findAll());
         return "/";
     }
+
 }

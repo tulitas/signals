@@ -11,11 +11,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 @Service
 public class JoinMeasureAndSensors {
-    @Resource
-    private MeasuresRepository measuresRepository;
+
     @Resource
     private SensorsRepository sensorsRepository;
-
 
     public List<MeasureAndSensorsDto> getMeasureAndSensorsRightJoin() {
         List<MeasureAndSensorsDto> list = sensorsRepository.fetchEmpPosDataRightJoin();

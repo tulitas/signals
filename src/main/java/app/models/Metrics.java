@@ -7,8 +7,9 @@ import java.util.Set;
 @Entity
 @Table(name = "metrics")
 public class Metrics implements Serializable {
-    @Id
 
+    @Id
+    @Column(name = "metric_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer metric_id;
 
