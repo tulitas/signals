@@ -8,20 +8,31 @@ public class MeasureAndMetricsDto {
     private String rtime;
     private Double rvalue;
     private String metric_name;
+    private String name;
 
     public MeasureAndMetricsDto(Long reading_id,
                                 Integer sensor_id,
                                 Integer metric_id,
                                 String rtime,
                                 Double rvalue,
-                                String metric_name) {
+                                String metric_name,
+                                String name) {
         this.reading_id = reading_id;
         this.sensor_id = sensor_id;
         this.metric_id = metric_id;
         this.rtime = rtime;
         this.rvalue = rvalue;
         this.metric_name = metric_name;
+        this.name = name;
 
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getReading_id() {
@@ -83,6 +94,7 @@ public class MeasureAndMetricsDto {
                 ", rtime='" + rtime + '\'' +
                 ", rvalue=" + rvalue +
                 ", metric_name='" + metric_name + '\'' +
+                ", name='" + name + '\'' +
                 '}';
     }
 }

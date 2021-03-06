@@ -6,8 +6,8 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}findByDate" method="get">
-    <input type="text" id="metricDate" name="metricDate">
-<button onclick="location.href='/getAllSensors'">Sensors</button>
+    <input type="date" id="metricDate" name="metricDate">
+<button onclick="location.href='/findByDate'">Sensors</button>
 </form>
 </body>
 </html>

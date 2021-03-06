@@ -10,15 +10,19 @@ import java.util.List;
 @Service
 public class JoinMeasureAndMetric {
 
-    @Resource
-    private MetricsRepository metricsRepository;
-
-
-    public List<MeasureAndMetricsDto> getMeasureAndMetricsLeftJoin() {
-        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoin();
-//        list.forEach(System.out::println);
-        return list;
-    }
-
-
+//    @Resource
+//    private MetricsRepository metricsRepository;
+//
+//
+//    public List<MeasureAndMetricsDto> getMeasureAndMetricsLeftJoin() {
+//        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoin();
+////        list.forEach(System.out::println);
+//        return list;
+//    }
+//
+//
+//    public Object getMeasureAndMetricsLeftJoinDate(String metricDate) {
+//        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinDate(metricDate);
+//        return list;
+//    }
 }

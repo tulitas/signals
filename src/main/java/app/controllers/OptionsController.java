@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 @Controller
 @RequestMapping("/")
 public class OptionsController {
@@ -53,11 +58,9 @@ public class OptionsController {
 
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
-        model.addAttribute("sensors", sensorsRepository.findAll());
-
-        model.addAttribute("test", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
-        model.addAttribute("metrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoin());
-//        System.out.println(model);
+//        model.addAttribute("sensors", sensorsRepository.findAll());
+//        model.addAttribute("findMetric", joinMeasureAndMetric.getMeasureAndMetricsLeftJoin());
+        model.addAttribute("findSensor", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
         return "sensors";
     }
 
@@ -71,6 +74,10 @@ public class OptionsController {
     @GetMapping("/findByDate")
     public String getByDate(Model model, String metricDate) {
         System.out.println(metricDate);
+        model.addAttribute("searchName", "Metrics by date");
+//        model.addAttribute("findMetric", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinDate(metricDate));
+        model.addAttribute("findSensor", joinMeasureAndSensors.getMeasureAndSensorsRightJoinDate(metricDate));
+
         return "sensors";
 
     }

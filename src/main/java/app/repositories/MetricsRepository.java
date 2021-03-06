@@ -12,7 +12,11 @@ import java.util.List;
 @Transactional
 @Repository
 public interface MetricsRepository extends CrudRepository<Metrics, Integer>, JpaRepository<Metrics, Integer> {
-    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue,  d.metric_name) " +
-            "FROM Metrics d left JOIN d.measures e where rtime = '2019-08-21 00:26:38'" )
-    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoin();
+//    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue,  d.metric_name, c.name) " +
+//            "FROM Metrics d, Sensors c left JOIN d.measures e where rtime = '2019-08-21 00:26:38'" )
+//    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoin();
+//
+//    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue,  d.metric_name, c.name) " +
+//            "FROM Metrics d, Sensors c left JOIN d.measures e where rtime like %:metricDate%" )
+//    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoinDate(String metricDate);
 }
