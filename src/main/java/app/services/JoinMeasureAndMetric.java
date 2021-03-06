@@ -23,8 +23,14 @@ public class JoinMeasureAndMetric {
         return list;
     }
 
-    public Object getMeasureAndMetricsLeftJoinByParameter(Integer parameter1, Integer parameter2, String metricData) {
-        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinByParameter(parameter1, parameter2, metricData);
+    public Object getMeasureAndMetricsLeftJoinByParameterMin(Integer parameter1, Integer parameter2, String metricData) {
+        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinByParameterMin(parameter1, parameter2, metricData);
+        return list;
+    }
+
+    public Object getMeasureAndMetricsLeftJoinByParameterMax(Integer parameter1, Integer parameter2, String metricData) {
+        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinByParameterMax(parameter1, parameter2, metricData);
+
         return list;
     }
 }

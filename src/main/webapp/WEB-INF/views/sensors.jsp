@@ -33,5 +33,30 @@
         </tr>
     </c:forEach>
 </table>
+
+<table id="myTable" style="float: left;">
+    <tr>
+        <th>Name</th>
+        <th>rtime</th>
+        <th>rvalue</th>
+    </tr>
+    <c:forEach var="findSensors" items="${findSensorsM}">
+        <tr>
+            <td width="25%">${findSensors.name}</td>
+            <td width="25%">${findSensors.rtime}</td>
+            <td width="25%">${findSensors.rvalue}</td>
+        </tr>
+    </c:forEach>
+</table>
+<table id="myTable">
+    <tr>
+        <th>metric</th>
+    </tr>
+    <c:forEach var="findMetrics" items="${findMetricsM}">
+        <tr>
+            <td width="15%">${findMetrics.metric_name}</td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

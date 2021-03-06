@@ -20,7 +20,11 @@ public interface MetricsRepository extends CrudRepository<Metrics, Integer>, Jpa
             "FROM Metrics d left JOIN d.measures e where rtime like %:metricData%" )
     List<MeasureAndMetricsDto> fetchEmpPosDataRightJoinByDate(String metricData);
 
-    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue,  d.metric_name) " +
-            "FROM Metrics d left JOIN d.measures e where rtime like %:metricData% and e.metric_id = :parameter1 and e.sensor_id = :parameter2" )
-    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoinByParameter(Integer parameter1, Integer parameter2, String metricData);
+    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, min(e.rvalue),  d.metric_name)" +
+            "FROM Metrics d left JOIN d.measures e where rtime like %:metricData% and e.metric_id = :parameter1 and e.sensor_id = :parameter2 ")
+    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoinByParameterMin(Integer parameter1, Integer parameter2, String metricData);
+
+    @Query(value = "SELECT new app.dto.MeasureAndMetricsDto(e.reading_id, e.sensor_id,  e.metric_id, e.rtime, max(e.rvalue),  d.metric_name)" +
+            "FROM Metrics d left JOIN d.measures e where rtime like %:metricData% and e.metric_id = :parameter1 and e.sensor_id = :parameter2 ")
+    List<MeasureAndMetricsDto> fetchEmpPosDataRightJoinByParameterMax(Integer parameter1, Integer parameter2, String metricData);
 }

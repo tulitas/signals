@@ -72,8 +72,13 @@ public class OptionsController {
 
     @GetMapping("/findByParameter")
     public String getByParameter(Model model, Integer parameter1, String metricData, Integer parameter2) {
-        model.addAttribute("findSensors", joinMeasureAndSensors.getMeasureAndSensorsRightJoinByParameter(parameter1, parameter2, metricData));
-        model.addAttribute("findMetrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinByParameter(parameter1, parameter2, metricData));
+        model.addAttribute("findSensors", joinMeasureAndSensors.getMeasureAndSensorsRightJoinByParameterMin(parameter1, parameter2, metricData));
+        model.addAttribute("findMetrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinByParameterMin(parameter1, parameter2, metricData));
+
+        model.addAttribute("findSensorsM", joinMeasureAndSensors.getMeasureAndSensorsRightJoinByParameterMax(parameter1, parameter2, metricData));
+        model.addAttribute("findMetricsM", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinByParameterMax(parameter1, parameter2, metricData));
+
+
         return "sensors";
     }
 }
