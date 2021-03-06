@@ -3,38 +3,35 @@
 <html>
 <head>
     <link href="<c:url value="/resources/css/sensorsList.css"/>" rel="stylesheet">
-
     <title>Sensors</title>
 </head>
 <body>
 <h2>Sensors list</h2>
-
+<button onclick="location.href='/'">Home</button>
+<br>
 <table id="myTable" style="float: left;">
     <tr>
         <th>Name</th>
         <th>rtime</th>
         <th>rvalue</th>
     </tr>
-
-    <c:forEach var="test" items="${test}">
+    <c:forEach var="findSensors" items="${findSensors}">
         <tr>
-            <td width="25%">${test.name}</td>
-            <td width="25%">${test.rtime}</td>
-            <td width="25%">${test.rvalue}</td>
+            <td width="25%">${findSensors.name}</td>
+            <td width="25%">${findSensors.rtime}</td>
+            <td width="25%">${findSensors.rvalue}</td>
         </tr>
     </c:forEach>
-
 </table>
 <table id="myTable">
     <tr>
         <th>metric</th>
     </tr>
-    <c:forEach var="metrics" items="${metrics}">
+    <c:forEach var="findMetrics" items="${findMetrics}">
         <tr>
-            <td width="25%">${metrics.metric_name}</td>
+            <td width="15%">${findMetrics.metric_name}</td>
         </tr>
     </c:forEach>
 </table>
-
 </body>
 </html>

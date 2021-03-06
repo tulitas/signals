@@ -22,7 +22,6 @@ public class OptionsController {
     private final JoinMeasureAndSensors joinMeasureAndSensors;
     private final JoinMeasureAndMetric joinMeasureAndMetric;
 
-
     public OptionsController(MetricsRepository metricsRepository,
                              MeasuresRepository measuresRepository,
                              SensorsRepository sensorsRepository,
@@ -39,14 +38,12 @@ public class OptionsController {
 
     @GetMapping("/getAllMetrics")
     public String getAllMetrics() {
-        System.out.println("hello metrics");
         System.out.println(metricsRepository.findAll());
         return "/";
     }
 
     @GetMapping("/getAllMeasures")
     public String getAllMeasures() {
-        System.out.println("hello measures");
         System.out.println(measuresRepository.findAll());
         return "/";
     }
@@ -54,24 +51,29 @@ public class OptionsController {
     @RequestMapping(value = "/getAllSensors", method = RequestMethod.GET)
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorsRepository.findAll());
-
-        model.addAttribute("test", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
-        model.addAttribute("metrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoin());
-//        System.out.println(model);
+        model.addAttribute("findSensors", joinMeasureAndSensors.getMeasureAndSensorsRightJoin());
+        model.addAttribute("findMetrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoin());
         return "sensors";
     }
 
     @GetMapping("/getAllUnits")
     public String getAllUnits() {
-        System.out.println("hello units");
         System.out.println(unitsRepository.findAll());
         return "/";
     }
 
     @GetMapping("/findByDate")
-    public String getByDate(Model model, String metricDate) {
-        System.out.println(metricDate);
+    public String getByDate(Model model, String metricData) {
+        model.addAttribute("findSensors", joinMeasureAndSensors.getMeasureAndSensorsRightJoinByDate(metricData));
+        model.addAttribute("findMetrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinByDate(metricData));
         return "sensors";
 
+    }
+
+    @GetMapping("/findByParameter")
+    public String getByParameter(Model model, Integer parameter1, String metricData, Integer parameter2) {
+        model.addAttribute("findSensors", joinMeasureAndSensors.getMeasureAndSensorsRightJoinByParameter(parameter1, parameter2, metricData));
+        model.addAttribute("findMetrics", joinMeasureAndMetric.getMeasureAndMetricsLeftJoinByParameter(parameter1, parameter2, metricData));
+        return "sensors";
     }
 }

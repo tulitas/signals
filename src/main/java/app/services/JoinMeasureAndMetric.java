@@ -13,12 +13,18 @@ public class JoinMeasureAndMetric {
     @Resource
     private MetricsRepository metricsRepository;
 
-
     public List<MeasureAndMetricsDto> getMeasureAndMetricsLeftJoin() {
         List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoin();
-//        list.forEach(System.out::println);
         return list;
     }
 
+    public List<MeasureAndMetricsDto> getMeasureAndMetricsLeftJoinByDate(String metricData) {
+        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinByDate(metricData);
+        return list;
+    }
 
+    public Object getMeasureAndMetricsLeftJoinByParameter(Integer parameter1, Integer parameter2, String metricData) {
+        List<MeasureAndMetricsDto> list = metricsRepository.fetchEmpPosDataRightJoinByParameter(parameter1, parameter2, metricData);
+        return list;
+    }
 }

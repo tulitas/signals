@@ -13,7 +13,14 @@ import java.util.List;
 @Repository
 public interface SensorsRepository extends JpaRepository<Sensors, Integer>, CrudRepository<Sensors, Integer> {
     @Query(value = "SELECT new app.dto.MeasureAndSensorsDto( e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue, d.name) " +
-            "FROM Sensors d left JOIN d.measures e where rtime = '2019-08-21 00:26:38'")
+            "FROM Sensors d left JOIN d.measures e ")
     List<MeasureAndSensorsDto> fetchEmpPosDataRightJoin();
 
+    @Query(value = "SELECT new app.dto.MeasureAndSensorsDto( e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue, d.name) " +
+            "FROM Sensors d left JOIN d.measures e where rtime like %:metricData%")
+    List<MeasureAndSensorsDto> fetchEmpPosDataRightJoinByDate(String metricData);
+
+    @Query(value = "SELECT new app.dto.MeasureAndSensorsDto( e.reading_id, e.sensor_id,  e.metric_id, e.rtime, e.rvalue, d.name) " +
+            "FROM Sensors d left JOIN d.measures e where rtime like %:metricData% and e.metric_id = :parameter1 and e.sensor_id = :parameter2")
+    List<MeasureAndSensorsDto> fetchEmpPosDataRightJoinByParameter(Integer parameter1, Integer parameter2, String metricData);
 }
